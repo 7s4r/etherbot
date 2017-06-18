@@ -1,0 +1,6 @@
+{
+  "kraken" : {
+    "api_key": "To setup in local.json",
+    "api_secret": "To setup in local.json"
+  }
+}
