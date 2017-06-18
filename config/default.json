@@ -2,5 +2,8 @@
   "kraken" : {
     "api_key": "To setup in local.json",
     "api_secret": "To setup in local.json"
+  },
+  "mongodb" : {
+    "url": "mongodb://localhost:27017/etherbot"
   }
 }

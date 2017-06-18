@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "",
   "license": "ISC",
   "dependencies": {
     "config": "^1.26.1",
     "kraken-api": "^0.1.7",
-    "mongodb": "^2.2.28"
+    "mongodb": "^2.2.28",
+    "promise": "^7.3.0"
   }
 }
