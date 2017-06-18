@@ -37,7 +37,7 @@ Database.prototype.insertPrices = function(prices) {
 }
 
 Database.prototype.disconnect = function() {
-	this.database.close()
+	this.db.close()
 }
 
 module.exports = Database

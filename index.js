@@ -29,6 +29,8 @@ start.then(function() {
   return prices
 }).then(function(prices) {
   return database.insertPrices(prices)
+}).finally(function() {
+  database.disconnect()
 }).then(function(prices) {
   console.log("[SUCCESS] Insert first page of prices done.")
   process.exit(0)
