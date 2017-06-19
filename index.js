@@ -14,25 +14,20 @@ const remoteAPI = new RemoteAPI()
 const serializer = new Serializer()
 
 const start = new Promise(function (resolve, reject) {
-  console.info("Inserting first page of prices done.")
+  console.info("Inserting price history.")
   resolve()
 })
 
 start.then(function() {
   return database.connect()
 }).then(function(db) {
-  return remoteAPI.getFirstPagePrice()
-}).then(function(rawPrices) {
-  const prices = rawPrices['XETHZEUR'].map(function(rawPrice) {
-    return serializer.deserialisePrice(rawPrice)
+  return remoteAPI.fetchPriceHistory(function(price) {
+    return database.insertPrice(price)
   })
-  return prices
-}).then(function(prices) {
-  return database.insertPrices(prices)
 }).finally(function() {
   database.disconnect()
 }).then(function(prices) {
-  console.log("[SUCCESS] Insert first page of prices done.")
+  console.log("[SUCCESS] Has inserted price history.")
   process.exit(0)
 }).catch(function(error) {
   console.error(error)
