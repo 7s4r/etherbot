@@ -22,6 +22,21 @@ Database.prototype.connect = function() {
 	return promise
 }
 
+Database.prototype.insertPrice = function(price) {
+	const self = this
+	const promise = new Promise(function (resolve, reject) {
+		self.db.collection('prices').insertOne(price, function(err, result) {
+			if (err) {
+				reject(err)
+			} else {
+				resolve(result)
+			}
+	  })
+	})
+	return promise
+}
+
+
 Database.prototype.insertPrices = function(prices) {
 	const self = this
 	const promise = new Promise(function (resolve, reject) {
