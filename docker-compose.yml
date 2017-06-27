@@ -1,0 +1,23 @@
+version: "2"
+
+services:
+  app:
+    build: ./app
+    volumes:
+      - ./app:/app
+    ports:
+      - "3000:3000"
+  back:
+    build: ./back
+    volumes:
+      - ./back:/code
+    ports:
+      - "5000:5000"
+    links:
+      - db
+  db:
+    image: redis:alpine
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - "6379:6379"
