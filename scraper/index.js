@@ -18,6 +18,8 @@ const start = new Promise(function (resolve, reject) {
 
 start.then(function() {
   return database.connect()
+}).then(function() {
+  return database.clear()
 }).then(function(db) {
   return remoteAPI.fetchPriceHistory(function(prices) {
     return database.insertPrices(prices)
