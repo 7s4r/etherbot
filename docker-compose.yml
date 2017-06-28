@@ -19,5 +19,3 @@ services:
     image: redis:alpine
     volumes:
       - ./data/db:/data/db
-    ports:
-      - "6379:6379"
