@@ -16,6 +16,6 @@ services:
     links:
       - db
   db:
-    image: redis:alpine
+    image: mongo:3.0
     volumes:
       - ./data/db:/data/db

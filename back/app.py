@@ -1,13 +1,14 @@
 from flask import Flask
-from redis import Redis
+from pymongo import MongoClient
 
 app = Flask(__name__)
-redis = Redis(host='db', port=6379)
+client = MongoClient('localhost', 27017)
+db = client.etherbot
 
 @app.route('/')
 def hello():
-    count = redis.incr('hits')
-    return 'Hello World! I have been seen {} times.\n'.format(count)
+    items = db.etherbot.find()
+    return 'Hello World! I have {} items.\n'.format(items)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
