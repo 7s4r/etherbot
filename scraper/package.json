@@ -8,6 +8,7 @@
   "license": "ISC",
   "dependencies": {
     "config": "^1.26.1",
+    "express": "^4.15.3",
     "kraken-api": "^0.1.7",
     "mongodb": "^2.2.28",
     "promise": "^7.3.0",

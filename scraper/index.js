@@ -1,35 +1,14 @@
 'use strict'
 
-var config = require('config')
-const Promise = require('promise')
+const express = require('express')
+const get_history_hour = require('./business_logic.js').get_history_hour
+const app = express()
 
-const Database = require('./database.js')
-const Price = require('./models.js').Price
-const RemoteAPI = require('./remote_api.js')
-
-const databaseURL = config.get('mongodb.url')
-const database = new Database(databaseURL)
-const remoteAPI = new RemoteAPI()
-
-const start = new Promise(function (resolve, reject) {
-  console.info("Inserting price history.")
-  resolve()
+app.get('/history/hours', function (req, res, next) {
+  get_history_hour() // Aynchronous
+  next()
+}, function (req, res, next) {
+  res.send('Launched')
 })
 
-start.then(function() {
-  return database.connect()
-}).then(function() {
-  return database.clear()
-}).then(function(db) {
-  return remoteAPI.fetchPriceHistory(function(prices) {
-    return database.insertPrices(prices)
-  })
-}).finally(function() {
-  database.disconnect()
-}).then(function(prices) {
-  console.log("[SUCCESS] Has inserted price history.")
-  process.exit(0)
-}).catch(function(error) {
-  console.error(error)
-  process.exit(1)
-})
+app.listen(3000)
