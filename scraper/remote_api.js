@@ -40,9 +40,14 @@ RemoteAPI.prototype.deserializeRequest = function(str) {
   const firstTimestamp = json["TimeFrom"]
   const rawPrices = json["Data"]
   const prices = rawPrices.map(function(rawPrice) {
-    const timestamp = rawPrice["time"]
-    const value = rawPrice["open"]
-    const price = new Price(timestamp, value)
+    const time = rawPrice["time"]
+    const close = rawPrice["close"]
+    const high = rawPrice["high"]
+    const low = rawPrice["low"]
+    const open = rawPrice["open"]
+    const volumeFrom = rawPrice["volumefrom"]
+    const volumeTo = rawPrice["volumeto"]
+    const price = new Price(time, close, high, low, open, volumeFrom, volumeTo)
     return price
   })
   return { prices: prices, firstTimestamp: firstTimestamp }

@@ -36,6 +36,15 @@ Database.prototype.insertPrices = function(prices) {
 	return promise
 }
 
+Database.prototype.clear = function() {
+	const self = this
+	const promise = new Promise(function (resolve, reject) {
+		self.db.collection('prices').removeMany()
+		resolve()
+	})
+	return promise
+}
+
 Database.prototype.disconnect = function() {
 	this.db.close()
 }
