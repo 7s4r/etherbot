@@ -1,6 +1,5 @@
 'use strict'
 
-const Sleep = require('sleep')
 const request = require('request-promise-native')
 const Price = require('./models.js').Price
 
@@ -18,7 +17,7 @@ RemoteAPI.prototype.fetchPriceHistory = async function(insertionManyPrices) {
     await insertionManyPrices(tuple.prices)
     timestamp = tuple.firstTimestamp // decrementation
     this.updateProgress(timestamp, tuple.prices)
-    Sleep.sleep(2) // To avoid DoS
+    await sleep(2000) // To avoid DoS
   }
 }
 
@@ -51,6 +50,10 @@ RemoteAPI.prototype.deserializeRequest = function(str) {
     return price
   })
   return { prices: prices, firstTimestamp: firstTimestamp }
+}
+
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms))
 }
 
 module.exports = RemoteAPI
