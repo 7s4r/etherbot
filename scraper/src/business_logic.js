@@ -1,7 +1,6 @@
 'use strict'
 
 const config = require('../config.js')
-const Promise = require('promise')
 
 const Database = require('./database.js')
 const Price = require('./models.js').Price
@@ -24,15 +23,15 @@ function get_history_hour() {
     return remoteAPI.fetchPriceHistory(function(prices) {
       return database.insertPrices(prices)
     })
-  }).finally(function() {
-    database.disconnect()
-  }).then(function(prices) {
-    console.log("[SUCCESS] Has inserted price history.")
-    process.exit(0)
-  }).catch(function(error) {
-    console.error(error)
-    process.exit(1)
   })
+  // finally
+  .then(disconnect)
+  .catch(disconnect)
+}
+
+function disconnect() {
+  database.disconnect()
+  console.log("[SUCCESS] Has inserted price history.")
 }
 
 module.exports = { get_history_hour }
