@@ -1,13 +1,13 @@
 'use strict'
 
-const config = require('config')
+const config = require('../config.js')
 const Promise = require('promise')
 
 const Database = require('./database.js')
 const Price = require('./models.js').Price
 const RemoteAPI = require('./remote_api.js')
 
-const databaseURL = config.get('mongodb.url')
+const databaseURL = config.mongodb.url
 const database = new Database(databaseURL)
 const remoteAPI = new RemoteAPI()
 
