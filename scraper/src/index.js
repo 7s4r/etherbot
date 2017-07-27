@@ -1,5 +1,3 @@
-'use strict'
-
 const express = require('express')
 const get_history_hour = require('./business_logic.js').get_history_hour
 const app = express()

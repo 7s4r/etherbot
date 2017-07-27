@@ -1,5 +1,3 @@
-'use strict'
-
 function Price(timestamp, close, high, low, open, volumeFrom, volumeTo) {
   this.timestamp = timestamp
   this.close = close
