@@ -1,9 +1,9 @@
 const express = require('express')
-const get_history_hour = require('./business_logic.js').get_history_hour
+const getHistoryHour = require('./business_logic.js').getHistoryHour
 const app = express()
 
 app.get('/history/hours', function (req, res, next) {
-  get_history_hour() // Aynchronous
+  getHistoryHour() // Aynchronous
   next()
 }, function (req, res, next) {
   res.send('Launched')

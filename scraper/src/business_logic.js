@@ -8,7 +8,7 @@ const databaseURL = config.mongodb.url
 const database = new Database(databaseURL)
 const remoteAPI = new RemoteAPI()
 
-function get_history_hour() {
+function getHistoryHour() {
   const start = new Promise(function (resolve, reject) {
     console.info("Inserting price history.")
     resolve()
@@ -32,4 +32,4 @@ function disconnect() {
   console.log("[SUCCESS] Has inserted price history.")
 }
 
-module.exports = { get_history_hour }
+module.exports = { getHistoryHour }
