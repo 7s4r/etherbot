@@ -1,17 +1,16 @@
 {
-  "name": "etherbot",
+  "name": "etherbot_scraper",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Scrap the prices and store it in database",
+  "main": "src/index.js",
   "scripts": {},
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "config": "^1.26.1",
+    "express": "^4.15.3",
     "kraken-api": "^0.1.7",
     "mongodb": "^2.2.28",
     "promise": "^7.3.0",
-    "request-promise-native": "^1.0.4",
-    "sleep": "^5.1.1"
+    "request-promise-native": "^1.0.4"
   }
 }

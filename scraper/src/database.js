@@ -1,7 +1,4 @@
-'use strict'
-
 const MongoClient = require('mongodb').MongoClient
-const Promise = require('promise')
 
 function Database(url) {
 	this.url = url

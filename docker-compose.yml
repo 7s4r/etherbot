@@ -1,6 +1,12 @@
 version: "2"
 
 services:
+  scraper:
+    build: ./scraper
+    volumes:
+      - ./scraper:/scraper
+    ports:
+      - "4000:4000"
   app:
     build: ./app
     volumes:
